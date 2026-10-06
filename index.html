@@ -3,46 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ТОП ДОМ — выставка домов в Рига Лайф</title>
-<meta name="description" content="Два дня открытых дверей в настоящих домах: экскурсии, эксперты индустрии, гастро-зона и аукцион. Посёлок «Рига Лайф», 22–23 мая 2027.">
-<meta name="theme-color" content="#f2f2f0">
-<meta property="og:title" content="ТОП ДОМ — выставка домов в Рига Лайф">
+<title>TD × Riga Life — выставка домов</title>
+<meta name="description" content="Выставка домов в посёлке «Рига Лайф», 22–23 мая 2027. Реальные дома, эксперты, гастро-зона и аукцион.">
+<meta name="theme-color" content="#121315">
+<meta property="og:title" content="TD × Riga Life — выставка домов">
 <meta property="og:description" content="22–23 мая 2027. Заходите в реальные дома, общайтесь со строителями, участвуйте в аукционе.">
-<meta property="og:image" content="assets/img/hero.webp">
+<meta property="og:image" content="assets/img/dusk.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@300..800&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
-<link rel="preload" as="image" href="assets/img/hero.webp" media="(min-width: 700px)">
-<link rel="preload" as="image" href="assets/img/hero-sm.webp" media="(max-width: 699px)">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@200..600&family=Unbounded:wght@300..700&display=swap">
+<link rel="preload" as="image" href="assets/img/dusk.webp">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <!-- ===================================================================
-     ТОП ДОМ · лендинг выставки домов
-     Весь текст с пометкой data-placeholder — черновой, заменить на реальный.
+     TD × Riga Life · лендинг выставки домов
+     Текст с атрибутом data-placeholder — черновой, заменить на реальный.
+     Картинки в assets/img — временные, заменяются на фото с теми же именами.
      =================================================================== -->
 
 <div class="loader" id="loader" aria-hidden="true">
-  <div class="loader__inner">
-    <span class="loader__word">ТОП ДОМ</span>
-    <span class="loader__count"><span id="loaderNum">0</span>%</span>
-  </div>
+  <div class="logo logo--xl"><b>TD</b><i>×</i><span>Riga Life</span></div>
+  <div class="loader__count"><span id="loaderNum">0</span></div>
   <div class="loader__bar"><i id="loaderBar"></i></div>
 </div>
 
+<div class="cursor" id="cursor" aria-hidden="true"><span class="cursor__label" id="cursorLabel"></span></div>
+<div class="peek" id="peek" aria-hidden="true"><img alt="" id="peekImg"></div>
+
 <header class="nav" id="nav">
-  <a class="logo" href="#top" aria-label="ТОП ДОМ — наверх">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15 16 5l12 10v12H4z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><rect x="13" y="18" width="6" height="9" fill="currentColor"/></svg>
-    <span>ТОП&nbsp;ДОМ</span>
-  </a>
+  <a class="logo" href="#top" aria-label="TD × Riga Life — наверх"><b>TD</b><i>×</i><span>Riga Life</span></a>
   <nav class="nav__pills" aria-label="Разделы">
-    <a href="#about" class="pill">О событии</a>
-    <a href="#program" class="pill">Программа</a>
+    <a href="#awaits" class="pill">Программа</a>
     <a href="#houses" class="pill">Дома</a>
     <a href="#auction" class="pill">Аукцион</a>
+    <a href="#place" class="pill">Промокод</a>
     <a href="#route" class="pill">Как добраться</a>
   </nav>
-  <a href="#register" class="btn btn--dark btn--sm nav__cta" data-magnetic>
+  <a href="#register" class="btn btn--light btn--sm nav__cta" data-magnetic>
     <span class="btn__label">Регистрация</span>
     <span class="btn__icon"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
   </a>
@@ -51,10 +49,10 @@
 
 <div class="menu" id="menu" aria-hidden="true">
   <nav class="menu__links" aria-label="Мобильное меню">
-    <a href="#about"><small>01</small>О событии</a>
-    <a href="#program"><small>02</small>Программа</a>
-    <a href="#houses"><small>03</small>Дома</a>
-    <a href="#auction"><small>04</small>Аукцион</a>
+    <a href="#awaits"><small>01</small>Программа</a>
+    <a href="#houses"><small>02</small>Дома</a>
+    <a href="#auction"><small>03</small>Аукцион</a>
+    <a href="#place"><small>04</small>Промокод</a>
     <a href="#route"><small>05</small>Как добраться</a>
   </nav>
   <div class="menu__foot">
@@ -65,126 +63,122 @@
 
 <main id="top">
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HERO: фото на весь экран ============ -->
   <section class="hero" id="hero">
-    <div class="hero__meta wrap">
-      <p class="hero__metaitem" data-hero-fade><b>22–23 мая 2027</b><span>сб–вс, 11:00–19:00</span></p>
-      <p class="hero__metaitem hero__metaitem--c" data-hero-fade><b>Выставка домов</b><span>под открытым небом</span></p>
-      <p class="hero__metaitem hero__metaitem--r" data-hero-fade><b>КП «Рига Лайф»</b><span data-placeholder>Новорижское направление</span></p>
+    <div class="hero__media" id="heroMedia">
+      <!-- ЗАМЕНИТЬ: фото дома/посёлка на всю ширину -->
+      <img src="assets/img/dusk.webp" alt="Дом с панорамными окнами вечером" fetchpriority="high">
+    </div>
+    <div class="hero__shade" aria-hidden="true"></div>
+
+    <div class="hero__top">
+      <p class="hero__kicker" data-hero-fade>Выставка домов · 2027</p>
+      <ul class="hero__list" data-hero-fade>
+        <li>— Реальные дома</li>
+        <li>— Эксперты индустрии</li>
+        <li>— Аукцион</li>
+      </ul>
     </div>
 
-    <div class="hero__stage">
-      <h1 class="hero__title" aria-label="ТОП ДОМ">
-        <span class="hero__line"><span class="ch">Т</span><span class="ch">О</span><span class="ch">П</span></span>
-        <span class="hero__line"><span class="ch">Д</span><span class="ch">О</span><span class="ch">М</span></span>
-      </h1>
-      <picture class="hero__house" data-hero-house>
-        <source media="(max-width: 699px)" srcset="assets/img/hero-sm.webp">
-        <img src="assets/img/hero.webp" alt="Двухэтажный современный дом с панорамным остеклением и тёплым светом в окнах" width="2200" height="902" fetchpriority="high">
-      </picture>
-      <div class="hero__chips" data-hero-fade>
-        <span class="chip is-active">Модерн</span><span class="chip">Барнхаус</span><span class="chip">Каркас</span><span class="chip">A-frame</span>
+    <h1 class="hero__title" id="heroTitle" aria-label="Топ дом">
+      <span class="hero__word"><span class="ch">Т</span><span class="ch">О</span><span class="ch">П</span></span>
+      <span class="hero__word hero__word--b"><span class="ch">Д</span><span class="ch">О</span><span class="ch">М</span></span>
+    </h1>
+
+    <div class="hero__bottom">
+      <div class="hero__card" data-hero-fade>
+        <dl>
+          <div><dt>Когда</dt><dd>22–23 мая 2027</dd></div>
+          <div><dt>Время</dt><dd>11:00–19:00</dd></div>
+          <div><dt>Где</dt><dd>КП «Рига Лайф»</dd></div>
+          <div><dt>Вход</dt><dd>свободный</dd></div>
+        </dl>
       </div>
-    </div>
-
-    <div class="hero__bottom wrap">
-      <p class="hero__lead" data-hero-fade>Два дня открытых дверей в&nbsp;настоящих домах. Заходите внутрь, говорите со&nbsp;строителями, пробуйте еду с&nbsp;гастро-площадки и&nbsp;участвуйте в&nbsp;аукционе.</p>
-      <div class="hero__actions" data-hero-fade>
-        <a href="#register" class="btn btn--dark btn--lg" data-magnetic>
-          <span class="btn__label">Зарегистрироваться бесплатно</span>
+      <div class="hero__cta" data-hero-fade>
+        <a href="#register" class="btn btn--light btn--lg" data-magnetic>
+          <span class="btn__label">Зарегистрироваться</span>
           <span class="btn__icon"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </a>
-        <a href="#program" class="btn btn--ghost btn--lg" data-magnetic><span class="btn__label">Смотреть программу</span></a>
-      </div>
-      <div class="countdown" data-hero-fade aria-label="До открытия выставки">
-        <span class="countdown__label">До открытия</span>
-        <div class="countdown__row" id="countdown">
-          <span><b data-cd="d">000</b><small>дней</small></span>
-          <span><b data-cd="h">00</b><small>часов</small></span>
-          <span><b data-cd="m">00</b><small>минут</small></span>
-          <span><b data-cd="s">00</b><small>секунд</small></span>
+        <div class="countdown" aria-label="До открытия выставки">
+          <span><b data-cd="d">000</b>дн</span><span><b data-cd="h">00</b>ч</span><span><b data-cd="m">00</b>мин</span><span><b data-cd="s">00</b>сек</span>
         </div>
       </div>
     </div>
+    <a href="#intro" class="hero__scroll" aria-label="Листать вниз"><span></span></a>
   </section>
 
   <!-- ============ MARQUEE ============ -->
   <div class="marquee-wrap"><div class="marquee" aria-hidden="true">
     <div class="marquee__track" id="marquee">
-      <span>Вход свободный по регистрации</span><i>✦</i><span>20+ домов открыты для осмотра</span><i>✦</i><span>Эксперты индустрии</span><i>✦</i><span>Гастро-зона</span><i>✦</i><span>Аукцион и розыгрыш</span><i>✦</i><span>Детская площадка</span><i>✦</i>
+      <span>Вход свободный</span><i>✦</i><span>20+ домов</span><i>✦</i><span>Эксперты</span><i>✦</i><span>Гастро-зона</span><i>✦</i><span>Аукцион</span><i>✦</i><span>22–23 мая</span><i>✦</i>
     </div>
   </div></div>
 
-  <!-- ============ STATEMENT ============ -->
-  <section class="statement wrap" id="about">
+  <!-- ============ INTRO ============ -->
+  <section class="intro wrap" id="intro">
     <p class="eyebrow" data-reveal>О событии</p>
-    <p class="statement__text" data-words>
-      Выбирать дом по картинкам — всё равно что выбирать машину по каталогу. <em>Приезжайте</em> пройтись по комнатам, потрогать материалы и <em>поговорить</em> с теми, кто строит.
-    </p>
+    <h2 class="display" data-chars>Дом надо увидеть вживую</h2>
+    <div class="intro__row">
+      <p class="intro__text" data-reveal>Два дня открытых дверей в&nbsp;настоящих домах. Заходите внутрь, говорите со&nbsp;строителями, пробуйте еду и&nbsp;участвуйте в&nbsp;аукционе.</p>
+      <a href="#awaits" class="circle-link" data-reveal data-magnetic aria-label="Что будет на выставке">
+        <svg viewBox="0 0 100 100" class="circle-link__text" aria-hidden="true"><defs><path id="circ" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0"/></defs><text><textPath href="#circ">что будет · что будет · что будет · </textPath></text></svg>
+        <svg viewBox="0 0 24 24" class="circle-link__arrow" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+    </div>
   </section>
 
-  <!-- ============ STATS ============ -->
-  <section class="stats wrap" aria-label="Выставка в цифрах">
-    <div class="stat" data-reveal><b><span data-count="20">20</span>+</b><span>домов открыты для&nbsp;осмотра</span></div>
-    <div class="stat" data-reveal><b><span data-count="30">30</span>+</b><span>компаний-участников</span></div>
-    <div class="stat" data-reveal><b><span data-count="2">2</span></b><span>дня программы</span></div>
-    <div class="stat" data-reveal><b><span data-count="16">16</span></b><span>часов лекций и&nbsp;экскурсий</span></div>
+  <!-- ============ STATS (серая полоса) ============ -->
+  <section class="stats" aria-label="Выставка в цифрах">
+    <div class="wrap stats__grid">
+      <div class="stat" data-slide><b class="odo" data-odo="20" data-suffix="+">20+</b><span>домов открыты</span></div>
+      <div class="stat" data-slide><b class="odo" data-odo="30" data-suffix="+">30+</b><span>компаний</span></div>
+      <div class="stat" data-slide><b class="odo" data-odo="2">2</b><span>дня программы</span></div>
+      <div class="stat" data-slide><b class="odo" data-odo="1" data-suffix=" приз">1 приз</b><span>в аукционе</span></div>
+    </div>
   </section>
 
-  <!-- ============ WHAT AWAITS (bento) ============ -->
+  <!-- ============ WHAT AWAITS ============ -->
   <section class="awaits wrap" id="awaits">
-    <div class="section-head">
-      <p class="eyebrow" data-reveal>Что вас ждёт</p>
-      <h2 class="h2" data-split>Всё, чтобы выбрать дом <em>с&nbsp;уверенностью</em></h2>
+    <div class="head">
+      <p class="eyebrow" data-reveal>Программа</p>
+      <h2 class="display display--md" data-chars>Что вас ждёт</h2>
     </div>
-
-    <div class="bento">
-      <article class="card card--houses" data-reveal data-tilt>
-        <div class="card__text">
-          <span class="tag">01 · Главное</span>
-          <h3>Реальные дома</h3>
-          <p>Заходите внутрь, проверяйте планировки, высоту потолков и вид из&nbsp;окон. Все дома готовы к&nbsp;показу.</p>
-        </div>
-        <img class="card__pop" src="assets/img/barn-sm.webp" alt="Чёрный барнхаус с панорамным остеклением фронтона" loading="lazy" data-speed="-0.08">
-        <a href="#houses" class="card__link" aria-label="Смотреть дома выставки"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <div class="awaits__grid">
+      <article class="feat feat--a" data-slide="left" data-cursor="Дома">
+        <div class="feat__img"><img src="assets/img/frame-sm.webp" alt="" loading="lazy"></div>
+        <span class="feat__n">01</span>
+        <div class="feat__body"><h3>Реальные дома</h3><p>Заходите внутрь, проверяйте планировки и&nbsp;вид из&nbsp;окон.</p></div>
       </article>
-
-      <article class="card card--dark card--experts" data-reveal data-tilt>
-        <span class="tag">02</span>
-        <h3>Эксперты индустрии</h3>
-        <p>Задайте вопросы тем, кто проектирует, строит и&nbsp;финансирует.</p>
-        <ul class="tags">
-          <li>Архитекторы</li><li>Строители</li><li>Банки и ипотека</li><li>Инженерные системы</li><li>Ландшафт</li><li>Интерьер</li>
-        </ul>
+      <article class="feat feat--b feat--dark" data-slide="right">
+        <div class="feat__img"><img src="assets/img/long-sm.webp" alt="" loading="lazy"></div>
+        <span class="feat__n">02</span>
+        <div class="feat__body"><h3>Эксперты</h3><p>Архитекторы, строители, банки и&nbsp;ландшафтные дизайнеры.</p></div>
       </article>
-
-      <article class="card card--food" data-reveal data-tilt>
-        <span class="tag">03</span>
-        <h3>Гастро-зона</h3>
-        <p>Фуд-корт, свежий кофе, гриль и фермерские продукты. Можно провести на&nbsp;выставке весь день.</p>
-        <svg class="card__art" viewBox="0 0 200 140" aria-hidden="true">
-          <path d="M40 60h88v34a30 30 0 0 1-30 30H70a30 30 0 0 1-30-30z" fill="none" stroke="currentColor" stroke-width="5"/>
-          <path d="M128 70h12a14 14 0 0 1 0 28h-12" fill="none" stroke="currentColor" stroke-width="5"/>
-          <path class="steam" d="M66 46c-8-10 8-14 0-26M86 46c-8-10 8-14 0-26M106 46c-8-10 8-14 0-26" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-        </svg>
+      <article class="feat feat--c feat--accent" data-slide="left">
+        <div class="feat__img"><img src="assets/img/aframe-sm.webp" alt="" loading="lazy"></div>
+        <span class="feat__n">03</span>
+        <div class="feat__body"><h3>Гастро-зона</h3><p>Кофе, гриль, выпечка и&nbsp;фермерские продукты весь день.</p></div>
       </article>
-
-      <article class="card card--auction" data-reveal data-tilt>
-        <span class="tag">04</span>
-        <h3>Аукцион и&nbsp;розыгрыш</h3>
-        <p>Главный приз разыграем в&nbsp;финале второго дня. Участвуют все зарегистрированные гости.</p>
-        <a href="#auction" class="textlink">Как участвовать <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <div class="card__ticket" aria-hidden="true"><span>№</span><b>0247</b></div>
+      <article class="feat feat--d feat--forest" data-slide="right">
+        <div class="feat__img"><img src="assets/img/barn-sm.webp" alt="" loading="lazy"></div>
+        <span class="feat__n">04</span>
+        <div class="feat__body"><h3>Аукцион</h3><p>Главный приз разыграем в&nbsp;финале второго дня.</p></div>
       </article>
     </div>
   </section>
 
-  <!-- ============ HOUSES ============ -->
+  <!-- ============ FULL-BLEED IMAGE + бегущая дата ============ -->
+  <section class="band" aria-label="22–23 мая">
+    <div class="band__media" data-parallax><img src="assets/img/village.webp" alt="Улицы посёлка" loading="lazy"></div>
+    <p class="band__text" id="bandText" aria-hidden="true">22—23 мая · Рига Лайф · 22—23 мая · Рига Лайф ·</p>
+  </section>
+
+  <!-- ============ HOUSES (серый фон) ============ -->
   <section class="houses" id="houses">
-    <div class="wrap section-head section-head--row">
+    <div class="wrap head head--row">
       <div>
         <p class="eyebrow" data-reveal>Дома выставки</p>
-        <h2 class="h2" data-split>Пройдитесь по&nbsp;улице, где <em>каждый</em> дом открыт</h2>
+        <h2 class="display display--md" data-chars>Каждый дом открыт</h2>
       </div>
       <div class="slider-ctrl" data-reveal>
         <button class="round-btn" id="prevHouse" aria-label="Предыдущий дом"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
@@ -192,190 +186,169 @@
       </div>
     </div>
 
-    <div class="rail" id="rail" tabindex="0" aria-label="Список домов, листайте вбок">
-      <article class="house">
-        <div class="house__img"><img src="assets/img/cube-sm.webp" alt="Двухэтажный дом в стиле модерн с консолью" loading="lazy" draggable="false"></div>
+    <div class="rail" id="rail" tabindex="0" aria-label="Список домов, листайте вбок" data-cursor="Тяни">
+      <article class="house" data-house>
+        <div class="house__img"><img src="assets/img/cube-sm.webp" alt="Двухэтажный дом в стиле модерн" loading="lazy" draggable="false"></div>
         <div class="house__body">
-          <div class="house__top"><span class="tag tag--line">Модерн</span><span class="house__area">186 м²</span></div>
+          <div class="house__top"><span class="tag">Модерн</span><span class="house__area">186 м²</span></div>
           <h3>Дом «Консоль»</h3>
-          <p data-placeholder>Газобетон, фасад из термодоски. Второй свет и терраса над входом.</p>
-          <div class="house__foot"><span data-placeholder>от 24,6 млн ₽</span><a href="#register" class="textlink">Записаться на показ <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="house__foot"><span data-placeholder>от 24,6 млн ₽</span><a href="#register" class="arrow-link" aria-label="Записаться на показ"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
         </div>
       </article>
-      <article class="house">
-        <div class="house__img"><img src="assets/img/barn-sm.webp" alt="Чёрный барнхаус" loading="lazy" draggable="false"></div>
+      <article class="house" data-house>
+        <div class="house__img"><img src="assets/img/barn-sm.webp" alt="Барнхаус" loading="lazy" draggable="false"></div>
         <div class="house__body">
-          <div class="house__top"><span class="tag tag--line">Барнхаус</span><span class="house__area">142 м²</span></div>
+          <div class="house__top"><span class="tag">Барнхаус</span><span class="house__area">142 м²</span></div>
           <h3>Барнхаус «Север»</h3>
-          <p data-placeholder>Каркас, металлическая фальцевая кровля, панорамный фронтон.</p>
-          <div class="house__foot"><span data-placeholder>от 14,9 млн ₽</span><a href="#register" class="textlink">Записаться на показ <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="house__foot"><span data-placeholder>от 14,9 млн ₽</span><a href="#register" class="arrow-link" aria-label="Записаться на показ"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
         </div>
       </article>
-      <article class="house">
-        <div class="house__img"><img src="assets/img/frame-sm.webp" alt="Каркасный дом с отделкой лиственницей и балконом" loading="lazy" draggable="false"></div>
+      <article class="house" data-house>
+        <div class="house__img"><img src="assets/img/frame-sm.webp" alt="Каркасный дом" loading="lazy" draggable="false"></div>
         <div class="house__body">
-          <div class="house__top"><span class="tag tag--line">Каркас</span><span class="house__area">158 м²</span></div>
+          <div class="house__top"><span class="tag">Каркас</span><span class="house__area">158 м²</span></div>
           <h3>Дом «Лиственница»</h3>
-          <p data-placeholder>Каркасная технология, строительство за 4 месяца, балкон-терраса.</p>
-          <div class="house__foot"><span data-placeholder>от 16,2 млн ₽</span><a href="#register" class="textlink">Записаться на показ <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="house__foot"><span data-placeholder>от 16,2 млн ₽</span><a href="#register" class="arrow-link" aria-label="Записаться на показ"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
         </div>
       </article>
-      <article class="house">
-        <div class="house__img"><img src="assets/img/aframe-sm.webp" alt="Дом A-frame с треугольным остеклением" loading="lazy" draggable="false"></div>
+      <article class="house" data-house>
+        <div class="house__img"><img src="assets/img/aframe-sm.webp" alt="Дом A-frame" loading="lazy" draggable="false"></div>
         <div class="house__body">
-          <div class="house__top"><span class="tag tag--line">A-frame</span><span class="house__area">96 м²</span></div>
+          <div class="house__top"><span class="tag">A-frame</span><span class="house__area">96 м²</span></div>
           <h3>Шале «Треугольник»</h3>
-          <p data-placeholder>Компактный дом для отдыха, высота гостиной 7 метров.</p>
-          <div class="house__foot"><span data-placeholder>от 9,8 млн ₽</span><a href="#register" class="textlink">Записаться на показ <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="house__foot"><span data-placeholder>от 9,8 млн ₽</span><a href="#register" class="arrow-link" aria-label="Записаться на показ"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
         </div>
       </article>
-      <article class="house">
-        <div class="house__img"><img src="assets/img/long-sm.webp" alt="Одноэтажная вилла с плоской кровлей и бассейном" loading="lazy" draggable="false"></div>
+      <article class="house" data-house>
+        <div class="house__img"><img src="assets/img/long-sm.webp" alt="Одноэтажная вилла" loading="lazy" draggable="false"></div>
         <div class="house__body">
-          <div class="house__top"><span class="tag tag--line">Одноэтажный</span><span class="house__area">210 м²</span></div>
+          <div class="house__top"><span class="tag">Одноэтажный</span><span class="house__area">210 м²</span></div>
           <h3>Вилла «Горизонт»</h3>
-          <p data-placeholder>Один этаж, вынос кровли 3 метра, терраса вдоль всего фасада.</p>
-          <div class="house__foot"><span data-placeholder>от 27,3 млн ₽</span><a href="#register" class="textlink">Записаться на показ <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <div class="house__foot"><span data-placeholder>от 27,3 млн ₽</span><a href="#register" class="arrow-link" aria-label="Записаться на показ"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
         </div>
       </article>
     </div>
     <div class="wrap"><div class="rail-progress"><i id="railBar"></i></div></div>
   </section>
 
-  <!-- ============ PROGRAM ============ -->
+  <!-- ============ PROGRAM: наведение показывает фото ============ -->
   <section class="program wrap" id="program">
-    <div class="section-head section-head--row">
+    <div class="head head--row">
       <div>
-        <p class="eyebrow" data-reveal>Программа</p>
-        <h2 class="h2" data-split>Два дня, <em>расписанные</em> по&nbsp;часам</h2>
+        <p class="eyebrow" data-reveal>Расписание</p>
+        <h2 class="display display--md" data-chars>Два дня программы</h2>
       </div>
       <div class="tabs" role="tablist" aria-label="Дни выставки" data-reveal>
-        <button class="tab is-active" role="tab" aria-selected="true" aria-controls="day1" id="tab1"><b>22 мая</b><span>суббота</span></button>
-        <button class="tab" role="tab" aria-selected="false" aria-controls="day2" id="tab2"><b>23 мая</b><span>воскресенье</span></button>
+        <button class="tab is-active" role="tab" aria-selected="true" aria-controls="day1" id="tab1">22 мая · сб</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="day2" id="tab2">23 мая · вс</button>
         <i class="tabs__ink" aria-hidden="true"></i>
       </div>
     </div>
-
-    <div class="days">
-      <ol class="day is-active" id="day1" role="tabpanel" aria-labelledby="tab1" data-placeholder>
-        <li><time>11:00</time><div><h4>Открытие выставки</h4><p>Приветствие организаторов, все дома открыты для осмотра</p></div><span class="tag tag--line">Главная площадь</span></li>
-        <li><time>12:00</time><div><h4>Экскурсия по посёлку с архитектором</h4><p>Маршрут по улицам, инфраструктура и свободные участки</p></div><span class="tag tag--line">Сбор у входа</span></li>
-        <li><time>13:30</time><div><h4>Каркас, газобетон или брус</h4><p>Лекция: что выбрать в 2027 году и сколько это стоит</p></div><span class="tag tag--line">Лекторий</span></li>
-        <li><time>15:00</time><div><h4>Ипотека на частный дом</h4><p>Консультации банков и разбор госпрограмм</p></div><span class="tag tag--line">Шатёр партнёров</span></li>
-        <li><time>16:30</time><div><h4>Ландшафт с первого сезона</h4><p>Мастер-класс по озеленению участка</p></div><span class="tag tag--line">Дом № 4</span></li>
-        <li><time>18:00</time><div><h4>Розыгрыш призов дня</h4><p>Подарки от компаний-участников</p></div><span class="tag tag--line">Главная сцена</span></li>
+    <div class="days" data-placeholder>
+      <ol class="day is-active" id="day1" role="tabpanel" aria-labelledby="tab1">
+        <li data-peek="assets/img/cube-sm.webp"><time>11:00</time><h4>Открытие выставки</h4><span>Главная площадь</span></li>
+        <li data-peek="assets/img/village-sm.webp"><time>12:00</time><h4>Экскурсия с архитектором</h4><span>Сбор у входа</span></li>
+        <li data-peek="assets/img/frame-sm.webp"><time>13:30</time><h4>Каркас, газобетон или брус</h4><span>Лекторий</span></li>
+        <li data-peek="assets/img/long-sm.webp"><time>15:00</time><h4>Ипотека на частный дом</h4><span>Шатёр партнёров</span></li>
+        <li data-peek="assets/img/aframe-sm.webp"><time>16:30</time><h4>Ландшафт с первого сезона</h4><span>Дом № 4</span></li>
+        <li data-peek="assets/img/barn-sm.webp"><time>18:00</time><h4>Розыгрыш призов дня</h4><span>Главная сцена</span></li>
       </ol>
-      <ol class="day" id="day2" role="tabpanel" aria-labelledby="tab2" hidden data-placeholder>
-        <li><time>11:00</time><div><h4>Открытие второго дня</h4><p>Дома и стенды компаний работают до вечера</p></div><span class="tag tag--line">Главная площадь</span></li>
-        <li><time>12:00</time><div><h4>Семейная экскурсия</h4><p>Посёлок глазами детей: площадки, прогулочные маршруты, лес</p></div><span class="tag tag--line">Сбор у входа</span></li>
-        <li><time>13:30</time><div><h4>Круглый стол застройщиков</h4><p>Сроки, сметы и гарантии: честный разговор с вопросами из зала</p></div><span class="tag tag--line">Лекторий</span></li>
-        <li><time>15:00</time><div><h4>Дегустация на гастро-площадке</h4><p>Фермерские продукты и сезонное меню</p></div><span class="tag tag--line">Гастро-зона</span></li>
-        <li><time>17:00</time><div><h4>Финал аукциона</h4><p>Розыгрыш главного приза среди зарегистрированных гостей</p></div><span class="tag tag--accent">Главная сцена</span></li>
-        <li><time>19:00</time><div><h4>Закрытие выставки</h4><p>Живая музыка и вечер на террасах</p></div><span class="tag tag--line">Главная сцена</span></li>
+      <ol class="day" id="day2" role="tabpanel" aria-labelledby="tab2" hidden>
+        <li data-peek="assets/img/cube-sm.webp"><time>11:00</time><h4>Открытие второго дня</h4><span>Главная площадь</span></li>
+        <li data-peek="assets/img/village-sm.webp"><time>12:00</time><h4>Семейная экскурсия</h4><span>Сбор у входа</span></li>
+        <li data-peek="assets/img/frame-sm.webp"><time>13:30</time><h4>Круглый стол застройщиков</h4><span>Лекторий</span></li>
+        <li data-peek="assets/img/aframe-sm.webp"><time>15:00</time><h4>Дегустация</h4><span>Гастро-зона</span></li>
+        <li data-peek="assets/img/barn-sm.webp" class="is-hot"><time>17:00</time><h4>Финал аукциона</h4><span>Главная сцена</span></li>
+        <li data-peek="assets/img/long-sm.webp"><time>19:00</time><h4>Закрытие и музыка</h4><span>Главная сцена</span></li>
       </ol>
     </div>
   </section>
 
   <!-- ============ AUCTION ============ -->
   <section class="auction" id="auction">
-    <div class="auction__bg" data-parallax-bg>
-      <img src="assets/img/dusk.webp" alt="" loading="lazy">
-    </div>
+    <div class="auction__bg" data-parallax><img src="assets/img/dusk-barn.webp" alt="" loading="lazy"></div>
     <div class="auction__inner wrap">
       <p class="eyebrow eyebrow--light" data-reveal>Аукцион · 23 мая, 17:00</p>
-      <h2 class="h2 h2--xl" data-split>Один вечер, <em>один</em> главный приз</h2>
-      <p class="auction__lead" data-reveal data-placeholder>Главный приз аукциона объявим ближе к дате. Участвуют все гости, которые зарегистрировались на сайте и пришли на выставку.</p>
+      <h2 class="display display--md display--light" data-chars>Один вечер — главный приз</h2>
       <ol class="steps">
-        <li data-reveal><span class="steps__n">1</span><h4>Зарегистрируйтесь</h4><p>Заполните форму на этом сайте, это займёт минуту</p></li>
-        <li data-reveal><span class="steps__n">2</span><h4>Получите номер</h4><p>На входе вам выдадут номер участника</p></li>
-        <li data-reveal><span class="steps__n">3</span><h4>Приходите на финал</h4><p>23 мая в 17:00 у главной сцены</p></li>
+        <li data-slide="up"><span class="steps__n">1</span><h4>Регистрация</h4><p>Форма на сайте, одна минута</p></li>
+        <li data-slide="up"><span class="steps__n">2</span><h4>Номер участника</h4><p>Выдадим на входе</p></li>
+        <li data-slide="up"><span class="steps__n">3</span><h4>Финал</h4><p>23 мая, 17:00, главная сцена</p></li>
       </ol>
       <a href="#register" class="btn btn--light btn--lg" data-magnetic data-reveal>
-        <span class="btn__label">Участвовать в аукционе</span>
+        <span class="btn__label">Участвовать</span>
         <span class="btn__icon"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
       </a>
     </div>
   </section>
 
-  <!-- ============ WHY ============ -->
-  <section class="why wrap" id="why">
-    <div class="section-head">
-      <p class="eyebrow" data-reveal>Зачем приезжать</p>
-      <h2 class="h2" data-split>За один день вы узнаете больше, чем за&nbsp;месяц <em>в&nbsp;интернете</em></h2>
+  <!-- ============ GAME: «Это место для вас» ============ -->
+  <section class="place" id="place" aria-labelledby="placeTitle">
+    <div class="place__inner wrap" id="placeArena">
+      <p class="eyebrow" data-reveal>Мини-игра</p>
+      <h2 class="place__title" id="placeTitle">
+        <span class="place__line" data-chars>Это место</span>
+        <span class="place__line">для <span class="slot" id="slot" aria-label="место для домика"><svg viewBox="0 0 100 90" aria-hidden="true"><path d="M8 44 50 8l42 36v40H8z"/></svg></span> вас</span>
+      </h2>
+      <p class="place__hint" id="placeHint"><span class="only-fine">Домик следует за курсором. Поставьте его в&nbsp;пустую рамку и&nbsp;нажмите.</span><span class="only-touch">Перетащите домик пальцем в&nbsp;пустую рамку.</span></p>
+
+      <div class="promo" id="promo" hidden>
+        <p>Ваш промокод на подарок от партнёров выставки</p>
+        <div class="promo__code"><b id="promoCode">RIGA-TD27</b><button type="button" class="copy copy--dark" data-copy="RIGA-TD27">Копировать</button></div>
+        <button type="button" class="textlink" id="replay">Сыграть ещё раз</button>
+      </div>
     </div>
-    <div class="why__grid">
-      <div class="why__item" data-reveal><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 22 24 9l16 13v17H8z"/><path d="M19 39V28h10v11"/></svg><h4>Сравнить технологии вживую</h4><p>Каркас, газобетон, клеёный брус — в соседних домах на одной улице.</p></div>
-      <div class="why__item" data-reveal><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="7" width="30" height="34" rx="3"/><path d="M16 16h16M16 23h16M16 30h9"/></svg><h4>Узнать реальные сроки и сметы</h4><p>Строители покажут, из чего складывается цена каждого дома.</p></div>
-      <div class="why__item" data-reveal><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 18h32v20H8z"/><path d="M24 18v20M8 26h32M18 18c-4 0-6-6-2-7s8 7 8 7 4-8 8-7 2 7-2 7"/></svg><h4>Условия только для гостей</h4><p>Скидки и подарки от компаний действуют в дни выставки.</p></div>
-      <div class="why__item" data-reveal><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 20 24 10l18 10M10 20v18h28V20M17 38V26h14v12"/></svg><h4>Ипотека на месте</h4><p>Банки посчитают платёж и подскажут подходящую госпрограмму.</p></div>
-      <div class="why__item" data-reveal><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42s14-12 14-24a14 14 0 0 0-28 0c0 12 14 24 14 24z"/><circle cx="24" cy="18" r="5"/></svg><h4>Увидеть посёлок и участки</h4><p>Дороги, коммуникации, соседство с лесом — всё можно проверить.</p></div>
-      <div class="why__item" data-reveal><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="17" cy="14" r="5"/><circle cx="33" cy="17" r="4"/><path d="M8 40v-8a9 9 0 0 1 18 0v8M27 40v-6a7 7 0 0 1 13 0v6"/></svg><h4>Отдохнуть всей семьёй</h4><p>Детская площадка, еда и прогулки на свежем воздухе.</p></div>
+    <div class="flyer" id="flyer" aria-hidden="true">
+      <svg viewBox="0 0 100 90">
+        <path d="M8 44 50 8l42 36v40H8z" fill="#121315"/>
+        <path d="M2 48 50 6l48 42" fill="none" stroke="#121315" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="22" y="50" width="22" height="22" rx="2" fill="#f6c37f"/>
+        <rect x="56" y="50" width="22" height="34" rx="2" fill="#e8913a"/>
+      </svg>
+    </div>
+    <canvas class="confetti" id="confetti" aria-hidden="true"></canvas>
+  </section>
+
+  <!-- ============ WHY (тёмный) ============ -->
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow eyebrow--light" data-reveal>Зачем приезжать</p>
+        <h2 class="display display--md display--light" data-chars>Шесть причин приехать</h2>
+      </div>
+      <div class="why__grid">
+        <div class="why__item" data-slide="up" data-spot><span class="why__n">01</span><h4>Технологии рядом</h4><p>Каркас, газобетон и брус на одной улице.</p></div>
+        <div class="why__item" data-slide="up" data-spot><span class="why__n">02</span><h4>Реальные сметы</h4><p>Строители покажут, из чего складывается цена.</p></div>
+        <div class="why__item" data-slide="up" data-spot><span class="why__n">03</span><h4>Скидки гостям</h4><p>Условия действуют только в дни выставки.</p></div>
+        <div class="why__item" data-slide="up" data-spot><span class="why__n">04</span><h4>Ипотека на месте</h4><p>Банки посчитают платёж и госпрограммы.</p></div>
+        <div class="why__item" data-slide="up" data-spot><span class="why__n">05</span><h4>Участки и посёлок</h4><p>Дороги, коммуникации, лес рядом.</p></div>
+        <div class="why__item" data-slide="up" data-spot><span class="why__n">06</span><h4>День для семьи</h4><p>Детская площадка, еда и прогулки.</p></div>
+      </div>
     </div>
   </section>
 
-  <!-- ============ VILLAGE ============ -->
-  <section class="village" id="village">
-    <div class="wrap village__grid">
-      <div class="village__text">
-        <p class="eyebrow" data-reveal>Место проведения</p>
-        <h2 class="h2" data-split>Посёлок <em>«Рига&nbsp;Лайф»</em></h2>
-        <p class="village__lead" data-reveal data-placeholder>Коттеджный посёлок для жизни круглый год: продуманные улицы, все коммуникации и лес по соседству. На время выставки посёлок открыт для всех гостей.</p>
-        <ul class="facts" data-placeholder>
-          <li data-reveal><b>Газ, свет, вода</b><span>все коммуникации подведены</span></li>
-          <li data-reveal><b>Асфальт</b><span>дороги внутри посёлка</span></li>
-          <li data-reveal><b>Лес рядом</b><span>прогулочные маршруты</span></li>
-          <li data-reveal><b>Охрана</b><span>КПП и видеонаблюдение</span></li>
-        </ul>
-      </div>
-      <div class="village__img" data-reveal-img>
-        <img src="assets/img/village-sm.webp" srcset="assets/img/village-sm.webp 1000w, assets/img/village.webp 2200w" sizes="(min-width: 900px) 55vw, 100vw" alt="Вид сверху на улицы посёлка с четырьмя домами разной архитектуры" loading="lazy">
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ROUTE ============ -->
+  <!-- ============ ROUTE: Яндекс Карта ============ -->
   <section class="route wrap" id="route">
-    <div class="section-head section-head--row">
+    <div class="head head--row">
       <div>
-        <p class="eyebrow" data-reveal>Как добраться</p>
-        <h2 class="h2" data-split>Дорога <em>займёт</em> меньше, чем кажется</h2>
+        <p class="eyebrow" data-reveal>Место проведения</p>
+        <h2 class="display display--md" data-chars>Как добраться</h2>
       </div>
     </div>
     <div class="route__grid">
-      <div class="map" data-reveal-img aria-label="Схема проезда">
-        <svg viewBox="0 0 600 420" class="map__svg" role="img" aria-label="Схематичная карта: путь от Москвы до посёлка">
-          <defs><pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0v30" fill="none" stroke="var(--line)" stroke-width="1"/></pattern></defs>
-          <rect width="600" height="420" fill="url(#grid)"/>
-          <ellipse cx="470" cy="250" rx="96" ry="86" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 6"/>
-          <text x="470" y="256" text-anchor="middle" class="map__label">Москва</text>
-          <path class="map__road" d="M378 236 C 300 220, 250 180, 160 150"/>
-          <path class="map__road map__road--thin" d="M160 150 C 140 140, 120 120, 100 70"/>
-          <path class="map__road map__road--thin" d="M200 162 C 210 220, 190 300, 150 380"/>
-          <path class="map__route" d="M378 236 C 300 220, 250 180, 160 150" pathLength="1"/>
-          <text x="282" y="178" class="map__label map__label--sm" transform="rotate(-18 282 178)" data-placeholder>Новорижское ш.</text>
-          <g class="map__pin" transform="translate(160 150)">
-            <circle r="26" class="map__pulse"/>
-            <circle r="12" fill="var(--ink)"/>
-            <circle r="4" fill="var(--paper)"/>
-          </g>
-          <text x="160" y="112" text-anchor="middle" class="map__label">Рига Лайф</text>
-        </svg>
+      <div class="map" data-reveal-img>
+        <!-- ЗАМЕНИТЬ: точные координаты посёлка в параметре ll (долгота,широта) и pt -->
+        <iframe class="map__frame" id="mapFrame" title="Посёлок Рига Лайф на Яндекс Картах" loading="lazy"
+          src="https://yandex.ru/map-widget/v1/?text=%D0%BA%D0%BE%D1%82%D1%82%D0%B5%D0%B4%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%BE%D1%81%D1%91%D0%BB%D0%BE%D0%BA%20%D0%A0%D0%B8%D0%B3%D0%B0%20%D0%9B%D0%B0%D0%B9%D1%84&amp;z=11"
+          allowfullscreen></iframe>
+        <a class="map__fallback" href="https://yandex.ru/maps/?text=%D0%BA%D0%BE%D1%82%D1%82%D0%B5%D0%B4%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%BE%D1%81%D1%91%D0%BB%D0%BE%D0%BA%20%D0%A0%D0%B8%D0%B3%D0%B0%20%D0%9B%D0%B0%D0%B9%D1%84" target="_blank" rel="noopener">Открыть карту</a>
       </div>
       <div class="route__cards">
-        <div class="rcard" data-reveal>
-          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 30l4-12h24l4 12v8H8z"/><circle cx="15" cy="34" r="3"/><circle cx="33" cy="34" r="3"/></svg>
-          <div><h4>На машине</h4><p data-placeholder>Бесплатная парковка у въезда в посёлок. Укажите в навигаторе «Рига Лайф».</p></div>
-        </div>
-        <div class="rcard" data-reveal>
-          <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="8" width="28" height="28" rx="5"/><path d="M10 24h28M16 36l-3 5M32 36l3 5"/><circle cx="17" cy="30" r="1.5"/><circle cx="31" cy="30" r="1.5"/></svg>
-          <div><h4>Бесплатный трансфер</h4><p data-placeholder>Шаттл от метро каждые 30 минут с 10:30 до 19:30. Место отправления пришлём после регистрации.</p></div>
-        </div>
-        <div class="rcard" data-reveal>
-          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 5"/></svg>
-          <div><h4>Часы работы</h4><p>22 и 23 мая, с 11:00 до 19:00. Приезжайте в любое время.</p></div>
-        </div>
-        <a class="btn btn--ghost btn--lg" href="https://yandex.ru/maps/?text=%D0%A0%D0%B8%D0%B3%D0%B0%20%D0%9B%D0%B0%D0%B9%D1%84%20%D0%BA%D0%BE%D1%82%D1%82%D0%B5%D0%B4%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%BE%D1%81%D1%91%D0%BB%D0%BE%D0%BA" target="_blank" rel="noopener" data-magnetic data-reveal>
-          <span class="btn__label">Открыть в Яндекс Картах</span>
+        <div class="rcard" data-slide="right"><h4>На машине</h4><p data-placeholder>Бесплатная парковка у въезда. В навигаторе: «Рига Лайф».</p></div>
+        <div class="rcard" data-slide="right"><h4>Трансфер</h4><p data-placeholder>Шаттл от метро каждые 30 минут, 10:30–19:30.</p></div>
+        <div class="rcard" data-slide="right"><h4>Посёлок</h4><p data-placeholder>Газ, свет, вода, асфальт, лес рядом, охрана.</p></div>
+        <a class="btn btn--dark btn--lg" href="https://yandex.ru/maps/?rtext=~%D0%BA%D0%BE%D1%82%D1%82%D0%B5%D0%B4%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%BF%D0%BE%D1%81%D1%91%D0%BB%D0%BE%D0%BA%20%D0%A0%D0%B8%D0%B3%D0%B0%20%D0%9B%D0%B0%D0%B9%D1%84" target="_blank" rel="noopener" data-magnetic data-reveal>
+          <span class="btn__label">Построить маршрут</span>
           <span class="btn__icon"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
         </a>
       </div>
@@ -387,12 +360,10 @@
     <div class="wrap register__grid">
       <div class="register__intro">
         <p class="eyebrow eyebrow--light" data-reveal>Регистрация</p>
-        <h2 class="h2 h2--light" data-split>Забронируйте <em>своё</em> место</h2>
-        <p class="register__lead" data-reveal>Вход бесплатный. Регистрация нужна, чтобы мы подготовили трансфер, а&nbsp;вы получили номер участника аукциона.</p>
-        <img class="register__house" src="assets/img/aframe-sm.webp" alt="" loading="lazy" data-speed="0.12">
+        <h2 class="display display--md display--light" data-chars>Забронируйте место</h2>
+        <p class="register__lead" data-reveal>Вход бесплатный. Регистрация даёт номер участника аукциона и место в&nbsp;трансфере.</p>
       </div>
-
-      <div class="form-wrap" data-reveal>
+      <div class="form-wrap" data-slide="right">
         <form class="form" id="form" novalidate>
           <div class="field">
             <input id="f-name" name="name" type="text" autocomplete="name" placeholder=" " required>
@@ -402,7 +373,7 @@
           <div class="field">
             <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder=" " required>
             <label for="f-phone">Телефон</label>
-            <span class="field__err">Проверьте номер: нужно 10 цифр после +7</span>
+            <span class="field__err">Нужно 10 цифр после +7</span>
           </div>
           <fieldset class="seg">
             <legend>Когда приедете</legend>
@@ -413,7 +384,7 @@
             </div>
           </fieldset>
           <div class="stepper">
-            <span>Сколько гостей</span>
+            <span>Гостей</span>
             <div class="stepper__ctrl">
               <button type="button" id="minus" aria-label="Меньше гостей">−</button>
               <output id="guests" aria-live="polite">2</output>
@@ -426,17 +397,13 @@
             <span class="btn__icon"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </button>
         </form>
-
         <div class="ticket" id="ticket" hidden>
-          <div class="ticket__top">
-            <span class="logo logo--light"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 15 16 5l12 10v12H4z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><rect x="13" y="18" width="6" height="9" fill="currentColor"/></svg>ТОП ДОМ</span>
-            <span class="ticket__no">№ <b id="tNo">0000</b></span>
-          </div>
+          <div class="ticket__top"><span class="logo logo--ink"><b>TD</b><i>×</i><span>Riga Life</span></span><span class="ticket__no">№ <b id="tNo">0000</b></span></div>
           <h3>Готово, <span id="tName">гость</span>!</h3>
           <p>Ждём вас <b id="tDay">22 мая</b>. Гостей: <b id="tGuests">2</b>. Мы позвоним, чтобы подтвердить запись.</p>
           <div class="ticket__cut" aria-hidden="true"></div>
           <div class="ticket__bottom"><span>КП «Рига Лайф»</span><span>11:00–19:00</span></div>
-          <button type="button" class="textlink textlink--light" id="again">Зарегистрировать ещё одного гостя</button>
+          <button type="button" class="textlink" id="again">Ещё один гость</button>
         </div>
       </div>
     </div>
@@ -444,16 +411,16 @@
 
   <!-- ============ FAQ ============ -->
   <section class="faq wrap" id="faq">
-    <div class="section-head">
+    <div class="head">
       <p class="eyebrow" data-reveal>Вопросы</p>
-      <h2 class="h2" data-split>Коротко о&nbsp;<em>главном</em></h2>
+      <h2 class="display display--md" data-chars>Частые вопросы</h2>
     </div>
     <div class="faq__list">
-      <details data-reveal><summary>Вход платный?<i></i></summary><div><p>Нет, вход бесплатный для всех. Регистрация нужна, чтобы участвовать в аукционе и забронировать место в трансфере.</p></div></details>
-      <details data-reveal><summary>Можно приехать с детьми и собакой?<i></i></summary><div><p>С детьми — обязательно: для них будет детская площадка и аниматоры. Собак на поводке тоже ждём, в дома с ними заходить нельзя.</p></div></details>
-      <details data-reveal><summary>Можно ли купить дом прямо на выставке?<i></i></summary><div><p>Да. Компании-участники заключают договоры на месте, а банки помогут с ипотекой. Для гостей выставки действуют специальные условия.</p></div></details>
-      <details data-reveal><summary>Что будет, если пойдёт дождь?<i></i></summary><div><p>Выставка пройдёт при любой погоде: лекторий и гастро-зона расположены в шатрах, а дома и так под крышей.</p></div></details>
-      <details data-reveal><summary>Где оставить машину?<i></i></summary><div><p>У въезда в посёлок будет бесплатная охраняемая парковка, оттуда до домов пять минут пешком.</p></div></details>
+      <details data-slide="up"><summary>Вход платный?<i></i></summary><div><p>Нет, вход бесплатный. Регистрация нужна для аукциона и трансфера.</p></div></details>
+      <details data-slide="up"><summary>Можно с детьми и собакой?<i></i></summary><div><p>С детьми — обязательно, будет детская площадка. Собак на поводке ждём, но в дома с ними заходить нельзя.</p></div></details>
+      <details data-slide="up"><summary>Можно купить дом на выставке?<i></i></summary><div><p>Да. Компании заключают договоры на месте, банки помогут с ипотекой.</p></div></details>
+      <details data-slide="up"><summary>А если дождь?<i></i></summary><div><p>Выставка пройдёт при любой погоде: лекторий и гастро-зона в шатрах.</p></div></details>
+      <details data-slide="up"><summary>Где парковка?<i></i></summary><div><p>Бесплатная охраняемая парковка у въезда, до домов пять минут пешком.</p></div></details>
     </div>
   </section>
 </main>
@@ -461,21 +428,12 @@
 <footer class="footer">
   <div class="wrap">
     <div class="footer__top">
-      <div>
-        <p class="eyebrow eyebrow--light">Организатор</p>
-        <p class="footer__org" data-placeholder>Строительная компания · название уточняется</p>
-      </div>
-      <div>
-        <p class="eyebrow eyebrow--light">Телефон</p>
-        <p class="footer__phone"><span data-placeholder>+7 (000) 000-00-00</span> <button class="copy" type="button" data-copy="+70000000000">Копировать</button></p>
-      </div>
-      <div>
-        <p class="eyebrow eyebrow--light">Соцсети</p>
-        <p class="footer__social"><a href="#" data-placeholder>Telegram</a><a href="#" data-placeholder>ВКонтакте</a></p>
-      </div>
+      <div><p class="eyebrow eyebrow--light">Организатор</p><p class="footer__big" data-placeholder>Строительная компания</p></div>
+      <div><p class="eyebrow eyebrow--light">Телефон</p><p class="footer__big"><span data-placeholder>+7 (000) 000-00-00</span> <button class="copy" type="button" data-copy="+70000000000">Копировать</button></p></div>
+      <div><p class="eyebrow eyebrow--light">Соцсети</p><p class="footer__social"><a href="#" data-placeholder>Telegram</a><a href="#" data-placeholder>ВКонтакте</a></p></div>
     </div>
-    <p class="footer__word" aria-hidden="true">ТОП ДОМ</p>
-    <div class="footer__bottom"><span>© 2027 ТОП ДОМ. Выставка домов в КП «Рига Лайф»</span><a href="#top">Наверх ↑</a></div>
+    <div class="footer__logo" aria-hidden="true"><b>TD</b><i>×</i><span>Riga Life</span></div>
+    <div class="footer__bottom"><span>© 2027 TD × Riga Life. Выставка домов</span><a href="#top">Наверх ↑</a></div>
   </div>
 </footer>
 
